@@ -149,12 +149,49 @@ void some_modern_cpp(){
     // when we are done with the vector we dont need to free the memory, it is done for us
 }
 
+void printArray(int i[], size_t n){
+    // this is a function that takes an array and its size as arguments
+    // it prints the elements of the array
+    for(size_t x = 0; x < n; x++){
+        printf("arr[%zu] = %d\n", x, i[x]); // prints 1, 2, 3, 4, 5
+    }
+}
+
+void printArrayByReference(const int (&i)[] , size_t n) {
+    // this is a function that takes an array by reference
+    // it prints the elements of the array
+    for(size_t x = 0; x < n; x++){
+        printf("arr[%zu] = %d\n", x, i[x]); // prints 1, 2, 3, 4, 5
+    }
+}
+
+void printVector(const std::vector<int>& vec) {
+    // this is a function that takes a vector by reference
+    // it prints the elements of the vector
+    for(size_t x = 0; x < vec.size(); x++){
+        printf("vec[%zu] = %d\n", x, vec[x]); // prints 1, 2, 3, 4, 5
+    }
+}
+
+void prinVectorByPointer(const std::vector<int>* vec) {
+    // this is a function that takes a vector by pointer
+    // it prints the elements of the vector
+    for(size_t x = 0; x < vec->size(); x++){
+        printf("vec[%zu] = %d\n", x, (*vec)[x]); // prints 1, 2, 3, 4, 5
+    }
+}
+
+
 int main(){
     basics();
     arrays();
     pointer_arithmetic();
     dynamic_memory();
     some_modern_cpp();
+
+    int arr[5] = {1, 2, 3, 4, 5}; // arr is a pointer to the first element of the array
+    printArray(arr, 5); // prints 1, 2, 3, 4, 5
+    printArrayByReference(arr, 5); // prints 1, 2, 3, 4, 5
     exit(EXIT_SUCCESS); // unix exit function
 
 }
