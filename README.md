@@ -3,10 +3,11 @@ This is a set of examples of basic pointer use
 A Pointer is a variable which stores the address of another variable. The purpose of which is to allow indirect access to it, and to allow copy by reference semantics 
 
 The pointer is a local variable and is therefore assigned onto the stack. but it can point to other varuiables, either on the stack or on the heap
-
-- int x = 5;
-- int* p = &x;
-- int y = *p;
+```c++
+  int x = 5;
+  int* p = &x;
+  int y = *p;
+```
 
 the unary & operator takes the address of a variable (this may also be a pointer in complex data strauctures). this is overloaded withe bainary bitwise and 
 - int** p2 = &p;
