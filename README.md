@@ -42,13 +42,13 @@ one of the main use of pointers (or references see below) is to pass by referenc
 in C++ its down to the developer to decide so I can pass anything in by reference or by value as I see fit
 
 ```c++
-void someFunc(int* i){
- std::cout << i << std::endl;
+void print(int* i){
+ std::cout << *i << std::endl;
 }
 
 void main(){
   int i -= 10;
-  somefunc(&i);
+  print(&i);
 }
 ```
 
