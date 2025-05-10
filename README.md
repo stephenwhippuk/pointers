@@ -126,7 +126,7 @@ out rescue, unless we need to implementa our own ADTs. The default choice uis ba
 
 void printVector(const std::vector<int>& v){
   for(auto i : v){
-    std::cout "i = " << i << std::endl;  
+    std::cout "i = " << *i << std::endl;  
   }
 }
 
@@ -134,9 +134,26 @@ void printVector(const std::vector<int>& v){
 std::vector<int> x = {0,1,2,3,4};
 printArray(x.data(), x.size());
 printVector(x);
-
-
 ```
+
+note how we use a reference here. This is where references come into their own, they act precisely like they do in the calling method. If we passed by pointer instead which we could it looks like this
+
+```c++
+
+void printVectorByPointer( std::vector<int> * v){
+  for(auto it = v->begin(); it != v->end(); it++){
+    std::cout "i = " << *it << std::endl;  
+  }
+ 
+}
+
+std::vector<int> x = {0,1,2,3,4}
+printVectorByPointer(&x);
+```
+
+I used the old style for to illustrate the use of the -> operator when using an object via a pointer, as opposed to the . operator when using a value object or a reference. 
+
+
 
 
 
