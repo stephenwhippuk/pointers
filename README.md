@@ -68,7 +68,7 @@ void main(){
 note how the array passed in doesn;t have a size, we're not allocating an array we're passing in a reference. The contrents of the array cannot be passed by value, because it is a pointer. More importantly it 
 doesn;t carry any notion of size with it, we need to pass in a correct size or risk overrunning the array, 
 
-## dynamic memeory allocation
+## dynamic memory allocation
 
 we can assign our own data from the heap at run time using the new operator, we can allocate a single or a sequence (array) of them. This is the only way to manage varaible length arrays in raw C++ so
 
@@ -90,9 +90,53 @@ delete val;
 
 ```
 
+## using references
+confusingly the & is also used  in what was an early attept to tame the pointer in reference semantics. A reference is a pointer with certain additional contsrains
+1) it must point to a valid allocation or null
+2) it cannot change once assigned
+
+note the use of const here, to qualify to the user that it cannot be modified. const semantics are more complicated with pointers and this is a good reason to use refereces for clarity, though the
+syntax for passing an array is a little odd
+
+```c++
+
+void printByRef(const int& i) {
+    std::cout << i << std::endl;  
+}
+
+void printArrayByRef(const int (&i)[], size_t n) {
+  for(auto x = 0; x < n; x++){
+    std::cout << i[x] << std::endl;
+}
+
+void main(){
+  int i = 10;
+  int arr[5] = {1,2,3,4,5};
+  printByRef(i); // no & for address.
+  printArrayByRef(arr, 5);
+}
+
+```
+
+## using standard containers
+so we have seen that in raw low level c++ if we want variable sized arrays etc, then we need to use dynamic memory management which is where the standard containers come to 
+out rescue, unless we need to implementa our own ADTs. The default choice uis basically a standard template Array, that is mofe like what you expect in a langauge like Java or C#
+
+```c++
+
+void printVector(const std::vector<int>& v){
+  for(auto i : v){
+    std::cout "i = " << i << std::endl;  
+  }
+}
 
 
+std::vector<int> x = {0,1,2,3,4};
+printArray(x.data(), x.size());
+printVector(x);
 
+
+```
 
 
 
