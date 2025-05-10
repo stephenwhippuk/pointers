@@ -65,6 +65,29 @@ void main(){
 }
 ```
 
-note how the array passed in doesn;t have a size, we're not allocating an array we're passing in a reference. The array cannot be passed by value, because it is a pointer. More importantly it 
+note how the array passed in doesn;t have a size, we're not allocating an array we're passing in a reference. The contrents of the array cannot be passed by value, because it is a pointer. More importantly it 
 doesn;t carry any notion of size with it, we need to pass in a correct size or risk overrunning the array, 
+
+## dynamic memeory allocation
+
+we can assign our own data from the heap at run time using the new operator, we can allocate a single or a sequence (array) of them. This is the only way to manage varaible length arrays in raw C++ so
+
+```c++
+
+int *val = new int(10);
+print(val);
+
+int* x = new int[5];
+printArray(x, 5);
+
+delete [] x;
+delete val;
+
+```
+
+
+
+
+
+
 
