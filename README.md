@@ -33,4 +33,20 @@ its a notation convenience but the array isn't a container type. its just raw me
 so x[5] is outside the bounds, if we're lucky it will throw a segmentation fault if we try to access it, if we're unlucky by random chance it might actually point at something valid and lead to
 a truly horrible pointer error, cause that allocated memory might be anywhere in our code and tracking down what's causing the error can be real nightmare. 
 
+## Passing Pointers into functions
+
+one of the main use of pointers (or references see below) is to pass by reference to avoid copying. Unlike in C# for example where pass by reference or value is a compiler decision,
+in C++ its down to the developer to decide so I can pass anything in by reference or by value as I see fit
+
+- void someFunc(int* i){
+-  std::cout << i << std::endl;
+- }
+
+- void main(){
+- int i -= 10;
+- somefunc(&i);
+- }
+
+
+
 
