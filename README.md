@@ -4,12 +4,12 @@ A Pointer is a variable which stores the address of another variable. The purpos
 
 The pointer is a local variable and is therefore assigned onto the stack. but it can point to other varuiables, either on the stack or on the heap
 
-int x = 5;
-int* p = &x;
-int y = *p;
+- int x = 5;
+- int* p = &x;
+- int y = *p;
 
 the unary & operator takes the address of a variable (this may also be a pointer in complex data strauctures). this is overloaded withe bainary bitwise and 
-int** p2 = &p;
+- int** p2 = &p;
 
 the unary * operator gets the value at the address stored in the pointer (This is overloaded with the binary multiplication form)
 
