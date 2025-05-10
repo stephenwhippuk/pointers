@@ -54,7 +54,7 @@ void main(){
 
 and we can therefore pass an array into a function by reference too, (obviously as its a pointer)
 ```c++
-void printArray(int[] i, size_t n){
+void printArray(int i[], size_t n){
   for(auto x = 0; x < n; x++){
     std::cout << i[x] << std::endl;
 }
@@ -65,4 +65,6 @@ void main(){
 }
 ```
 
+note how the array passed in doesn;t have a size, we're not allocating an array we're passing in a reference. The array cannot be passed by value, because it is a pointer. More importantly it 
+doesn;t carry any notion of size with it, we need to pass in a correct size or risk overrunning the array, 
 
