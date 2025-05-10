@@ -28,8 +28,8 @@ int z = x[0]; // is the same as saying
 int z = *x;
 
 // you can do arithemetic with a pointer thus
-- int z = x[1] // is the same as saying
-- int z = *(x+1);
+int z = x[1] // is the same as saying
+int z = *(x+1);
 ```
 
 its a notation convenience but the array isn't a container type. its just raw memory 
@@ -47,8 +47,8 @@ void someFunc(int* i){
 }
 
 void main(){
-int i -= 10;
-somefunc(&i);
+  int i -= 10;
+  somefunc(&i);
 }
 ```
 
