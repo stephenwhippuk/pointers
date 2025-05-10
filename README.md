@@ -78,6 +78,11 @@ int *val = new int(10);
 print(val);
 
 int* x = new int[5];
+
+// initialise the array with values
+for(auto i = 0; i < 5; i++){
+  x[i] = i;
+}
 printArray(x, 5);
 
 delete [] x;
