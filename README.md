@@ -47,11 +47,22 @@ void print(int* i){
 }
 
 void main(){
-  int i -= 10;
+  int i = 10;
   print(&i);
 }
 ```
 
+and we can therefore pass an array into a function by reference too, (obviously as its a pointer)
+```c++
+void printArray(int[] i, size_t n){
+  for(auto x = 0; x < n; x++){
+    std::cout << i[x] << std::endl;
+}
 
+void main(){
+  int x[5] = {0,1,2,3,4};
+  printArray(x, 5);
+}
+```
 
 
