@@ -157,7 +157,7 @@ that are hidden under the hood by the range based for loop. An ierator is an abs
 ## Smart Pointers
 SMart pointers complete the circuit of memory safety, for when we need more direct access to the memory allocated to the heap, but need to make sure that we don; cause memory management problems, they are C++ answer to not needing GC 
 
-There are 2 main flavours, std::unique_pointer<T> and std::shared_pointer<T>
+There are 2 main flavours, std::unique_pointer\<T\> and std::shared_pointer\<T\>
 
 the former ensures that only 1 reference exists to the memeory whereas shared allows multiple references and counts them. Oft timee to ineteract with other code you may need to unpack the raw pointer, but in general 
 they provide safer code
