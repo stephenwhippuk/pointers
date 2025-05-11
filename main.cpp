@@ -8,6 +8,7 @@ Theres a lot in here and so Ill take it bit by bit with commentary
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <memory>
 
 void basics(){
     printf("The Basics of Pointers\n");
@@ -181,6 +182,53 @@ void prinVectorByPointer(const std::vector<int>* vec) {
     }
 }
 
+void smartPointers(){
+    printf("Smart Pointers\n");
+    // smart pointers are a new feature in C++11 that make working with pointers easier
+    // they are part of the standard template library (STL) and are very useful for working with dynamic arrays
+    // they automatically manage the memory for us and free it when we are done with it
+    // there are two types of smart pointers: unique_ptr and shared_ptr
+
+    // unique_ptr is a smart pointer that owns a single object and cannot be copied
+    // it is used for objects that have a single owner
+    std::unique_ptr<int> p1(new int[5]); // p1 is a unique_ptr to an integer
+    // initialise the array with the values 1, 2, 3, 4, 5
+    for(int i = 0; i < 5; i++){
+        *(p1.get() + i)= i + 1; // p1 is a pointer to the first element of the array
+    }
+    // shared_ptr is a smart pointer that can be shared between multiple owners
+    // it is used for objects that have multiple owners
+    std::shared_ptr<int> p2(new int[5]); // p2 is a shared_ptr to an integer
+    for(int i = 0; i < 5; i++){
+        *(p2.get() + i)= i + 1; // p1 is a pointer to the first element of the array
+    }
+
+    // access is a little more complicated than a normal pointer 
+    // we can use the get() method to get the raw pointer to the object
+    // we can also use the dereference operator * to get the value of the object
+
+    printf("p1 = %d\n", *p1); // prints 5
+    printf("p2 = %d\n", *p2); // prints 5
+
+    printArray(p1.get(), 5); // prints 1, 2, 3, 4,5
+    printArray(p2.get(), 5); // prints 1, 2, 3, 4,5
+
+    // however the payoff is that we dont need to worry about freeing the memory
+
+    // there are also weak pointers which are used to break circular references
+    // they are not used as often but are useful in some cases
+
+    std::weak_ptr<int> p3(p2); // p3 is a weak_ptr to an integer
+    // weak_ptr does not own the object and does not free the memory
+
+    printArray(p3.lock().get(), 5); // prints 1, 2, 3, 4,5
+    // the lock() method returns a shared_ptr to the object if it is still valid
+    // otherwise it returns a nullptr
+}
+
+
+
+
 
 int main(){
     basics();
@@ -192,6 +240,8 @@ int main(){
     int arr[5] = {1, 2, 3, 4, 5}; // arr is a pointer to the first element of the array
     printArray(arr, 5); // prints 1, 2, 3, 4, 5
     printArrayByReference(arr, 5); // prints 1, 2, 3, 4, 5
+
+    smartPointers();
     exit(EXIT_SUCCESS); // unix exit function
 
 }
