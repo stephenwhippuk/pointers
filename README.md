@@ -162,7 +162,7 @@ There are 2 main flavours, std::unique_pointer<T> and std::shared_pointer<T>
 the former ensures that only 1 reference exists to the memeory whereas shared allows multiple references and counts them. Oft timee to ineteract with other code you may need to unpack the raw pointer, but in general 
 they provide safer code
 
-``c++
+```c++
 
 struct myType {
   int x, int y;
