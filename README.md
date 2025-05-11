@@ -151,7 +151,37 @@ std::vector<int> x = {0,1,2,3,4}
 printVectorByPointer(&x);
 ```
 
-I used the old style for to illustrate the use of the -> operator when using an object via a pointer, as opposed to the . operator when using a value object or a reference. 
+I used the old style for to illustrate the use of the -> operator when using an object via a pointer, as opposed to the . operator when using a value object or a reference. ALso to show the iterators
+that are hidden under the hood by the range based for loop. An ierator is an abstraction of a pointer provided to provide consistent access to container classes
+
+## Smart Pointers
+SMart pointers complete the circuit of memory safety, for when we need more direct access to the memory allocated to the heap, but need to make sure that we don; cause memory management problems, they are C++ answer to not needing GC 
+
+There are 2 main flavours, std::unique_pointer<T> and std::shared_pointer<T>
+
+the former ensures that only 1 reference exists to the memeory whereas shared allows multiple references and counts them. Oft timee to ineteract with other code you may need to unpack the raw pointer, but in general 
+they provide safer code
+
+``c++
+
+struct myType {
+  int x, int y;
+  myType(int x, int y){
+    this->x = x;
+    this->y = y;
+  } 
+};
+
+void printMyType(const myType& obj){
+  cout << "object = {x : " << oby.x << ", y = " << obj.y << "} << std::endl;
+}
+
+auto p1 = std::shared_pointer<myType>(new myType(10, 15));
+
+printMyType(*p1);
+
+```
+
 
 
 
